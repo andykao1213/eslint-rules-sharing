@@ -1,4 +1,4 @@
-const { capitalize, getSetterName } = require("./lib");
+const { capitalize } = require("./lib");
 
 module.exports = {
   rules: {
@@ -12,13 +12,12 @@ module.exports = {
             ) {
               const stateNode = node.id.elements[0];
               const setterNode = node.id.elements[1];
-              const idealName = capitalize(stateNode.name);
-              if (getSetterName(setterNode.name) !== idealName)
+              const idealName = `set${capitalize(stateNode.name)}`;
+              if (setterNode.name !== idealName)
                 return context.report({
                   node: setterNode,
-                  message: `The setter '${setterNode.name}' should be 'set${idealName}'`,
-                  fix: (fixer) =>
-                    fixer.replaceText(setterNode, `set${idealName}`),
+                  message: `The setter '${setterNode.name}' should be '${idealName}'`,
+                  fix: (fixer) => fixer.replaceText(setterNode, idealName),
                 });
             }
           },
