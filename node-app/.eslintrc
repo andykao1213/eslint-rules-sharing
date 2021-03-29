@@ -1,0 +1,9 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "rules": {
+    "setState-naming-rule/setState-in-camel-case": "error"
+  },
+  "plugins": ["setState-naming-rule"]
+}
