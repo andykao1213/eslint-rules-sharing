@@ -1,7 +1,7 @@
-// Forgive me that I don't had time to setup Babel 😭😭😭😭
+import { useState } from "react";
 
 function Component() {
   const [count, changeTheCount] = useState(0);
 
-  return "Hello setState";
+  return <h1>Hello setState</h1>;
 }
